@@ -14,10 +14,9 @@ int _printf(const char *format, ...)
 {
 	unsigned int i, j = 0, k;
 	va_list vp;
-	char *buf;
+	char *buf[];
 	pf_t _val;
 
-	buf = malloc(1024);
 	va_start(vp, format);
 
 	i = 0;
