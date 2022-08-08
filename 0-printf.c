@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdlib.h>
 #include <stdarg.h>
 #include <unistd.h>
 
@@ -14,9 +15,10 @@ int _printf(const char *format, ...)
 {
 	unsigned int i, j = 0, k;
 	va_list vp;
-	char *buf[];
+	char *buf;
 	pf_t _val;
 
+	buf = malloc(sizeof(char) * 1024);
 	va_start(vp, format);
 
 	i = 0;
@@ -57,5 +59,5 @@ int _printf(const char *format, ...)
 		i++;
 	}
 	va_end(vp);
-	return (j);
-
+	return ((int)j);
+}
