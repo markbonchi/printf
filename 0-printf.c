@@ -13,51 +13,51 @@
 
 int _printf(const char *format, ...)
 {
-	unsigned int i, j = 0, k;
+	int i, j, ret = 0;
 	va_list vp;
 	char *buf;
 	pf_t _val;
 
 	buf = malloc(sizeof(char) * 1024);
+	if (!buf)
+		return (1);
 	va_start(vp, format);
 
 	i = 0;
 	while (format[i] != '\0')
 	{
-		if (format[i] == '%')
+		if (format[i] != '%')
+		{
+			_putchar(format[i]);
+			buf[ret++] = format[i];
+
+		} else
 		{
 			switch (format[++i])
 			{
 				case 'c':
 					_val.ch = va_arg(vp, int);
-					buf[j++] = _val.ch;
-					_putchar(_val.ch);
+					print_char(_val.ch);
 					break;
 				case 's':
 					_val.str = va_arg(vp, char *);
-					if (_val.str == NULL)
-						_puts("NULL");
-					else
+					j = 0;
+					while (_val.str[j++] != '\0')
 					{
-						for (k = 0; _val.str[k] != '\0'; k++)
-							buf[j++] = _val.str[k];
-						_puts(_val.str);
+						buf[ret++] = _val.str[j];
 					}
+					print_str(_val.str);
 					break;
 				case '%':
-					buf[j++] = '%';
+					buf[ret++] = '%';
 					_putchar('%');
 					break;
 				default:
 					break;
 			}
-		} else
-		{
-			buf[j++] = format[i];
-			_putchar(format[i]);
 		}
 		i++;
 	}
 	va_end(vp);
-	return ((int)j);
+	return (ret);
 }
