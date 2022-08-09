@@ -12,12 +12,11 @@
 
 int _printf(const char *format, ...)
 {
-	int i, j = 0, k;
+	int i;
 	va_list vp;
 	pf_t _val;
-	char *buff;
+	char buff[1024];
 
-	buff = malloc(sizeof(char) * 1024);
 	va_start(vp, format);
 
 	i = 0;
@@ -29,7 +28,6 @@ int _printf(const char *format, ...)
 			{
 				case 'c':
 					_val.ch = va_arg(vp, int);
-					buff[j++] = _val.ch;
 					_putchar(_val.ch);
 					break;
 				case 's':
@@ -37,13 +35,12 @@ int _printf(const char *format, ...)
 					if (_val.str == NULL)
 						_puts("NULL");
 					else
-						for (k = 0; _val.str[k] < '\0'; k++)
-							buff[j++] = _val.str[k]
 						_puts(_val.str);
+					bu
 					break;
 				case '%':
-					buff[j++] = '%';
 					_putchar('%');
+					buff[i] = format[i];
 					break;
 				default:
 					break;
@@ -56,5 +53,5 @@ int _printf(const char *format, ...)
 		i++;
 	}
 	va_end(vp);
-	return (j);
+	return (i);
 }
