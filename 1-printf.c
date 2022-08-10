@@ -1,6 +1,9 @@
 #include "main.h"
 
 /**
+ * print_str - print out string
+ * @str: string parameter
+ * Return: 0.
  */
 
 int print_str(char *str)
@@ -11,6 +14,9 @@ int print_str(char *str)
 }
 
 /**
+ * print_char - print out characters
+ * @c: Character parameter
+ * Return: 0.
  */
 
 int print_char(char c)

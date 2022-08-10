@@ -20,5 +20,6 @@ int print_char(char c);
 int print_str(char *str);
 int print_dec(int num);
 int _printf(const char *format, ...);
+void print(int integer);
 
 #endif

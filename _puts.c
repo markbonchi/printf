@@ -2,6 +2,8 @@
 
 /**
  * _puts - print string to stdout
+ * @str: string output
+ * Return: 0.
  */
 
 int _puts(char *str)

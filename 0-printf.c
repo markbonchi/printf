@@ -4,13 +4,10 @@
 #include <unistd.h>
 
 /**
- * Printf function for alx-se _printf function project
+ * _printf - This function is to immitate printf
+ * @format: First parameter
+ * Return: ret.
  */
-
-/**
- * _printf - prints output according to a format
- */
-
 int _printf(const char *format, ...)
 {
 	int i, j, ret = 0;
