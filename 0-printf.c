@@ -28,6 +28,10 @@ int _printf(const char *format, ...)
 			ret++;
 		} else
 		{
+			if (format[i + 1] < 'A' && format[i + 1] != '%')
+			{
+				i++;
+			}
 			switch (format[++i])
 			{
 				case 'c':
@@ -45,8 +49,17 @@ int _printf(const char *format, ...)
 						j++;
 					}
 					break;
+				case 'i':
+					_val.num = va_arg(vp, int);
+					ret += print_dec(_val.num);
+					break;
+				case 'd':
+					_val.num = va_arg(vp, int);
+					ret += print_dec(_val.num);
+					break;
 				case '%':
 					_putchar('%');
+					ret++;
 					break;
 				default:
 					_putchar('%');
